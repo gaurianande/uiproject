@@ -1,0 +1,34 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div *ngIf="searchMode">
+      <h4>Search for: {{ searchKeyword }}</h4>
+    </div>
+    <hr>
+
+    <div class="container-fluid">
+      <div class="row">
+
+        <!-- Loop over the collection of products -->
+        <div class="col-md-3" *ngFor="let product of products">
+
+          <div class="product-box">
+            <a routerLink="/products/{{ product.id }}">
+              <img src="../../../assets/productimage.png" class="img-fluid">
+            </a>
+            <a routerLink="/products/{{ product.id }}">
+              <h1>{{ product.name }}</h1>
+            </a>
+            <div class="price">${{ product.price}}</div>
+          </div>
+
+        </div>
+
+        <!-- When products are empty then display a message -->
+        <div class="alert alert-warning col-md-12" *ngIf="products?.length === 0" role="alert">
+          No products found.
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
